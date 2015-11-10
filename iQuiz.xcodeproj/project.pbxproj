@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03CBE15E1BF1E24100E08346 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */; };
 		03E4574D1BE94D24006CB7ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4574C1BE94D24006CB7ED /* AppDelegate.swift */; };
 		03E4574F1BE94D24006CB7ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4574E1BE94D24006CB7ED /* ViewController.swift */; };
 		03E457521BE94D24006CB7ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E457501BE94D24006CB7ED /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		03E457491BE94D24006CB7ED /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E4574C1BE94D24006CB7ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03E4574E1BE94D24006CB7ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				03E4574C1BE94D24006CB7ED /* AppDelegate.swift */,
 				03E4574E1BE94D24006CB7ED /* ViewController.swift */,
 				03E457501BE94D24006CB7ED /* Main.storyboard */,
+				03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */,
 				03E457531BE94D24006CB7ED /* Assets.xcassets */,
 				03E457551BE94D24006CB7ED /* LaunchScreen.storyboard */,
 				03E457581BE94D24006CB7ED /* Info.plist */,
@@ -261,6 +264,7 @@
 			files = (
 				03E4574F1BE94D24006CB7ED /* ViewController.swift in Sources */,
 				03E4574D1BE94D24006CB7ED /* AppDelegate.swift in Sources */,
+				03CBE15E1BF1E24100E08346 /* QuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +491,7 @@
 				03E457731BE94D24006CB7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03E457741BE94D24006CB7ED /* Build configuration list for PBXNativeTarget "iQuizTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +500,7 @@
 				03E457761BE94D24006CB7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03E457771BE94D24006CB7ED /* Build configuration list for PBXNativeTarget "iQuizUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +509,7 @@
 				03E457791BE94D24006CB7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

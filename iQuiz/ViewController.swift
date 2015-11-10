@@ -9,17 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private var questionViewController: QuestionViewController!
     
     private let subjects = [
         "Mathematics", "Marvel Super Heroes", "Science"]
     
+    private let questionSeque = "questionSegue"
+    
     let simpleTableIdentifier = "SimpleTableIdentifier"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        questionViewController = storyboard?.instantiateViewControllerWithIdentifier("Question")
+            as! QuestionViewController
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,33 +62,20 @@ class ViewController: UIViewController {
             cell!.textLabel?.text = subjects[indexPath.row]
             cell!.textLabel?.font = UIFont .boldSystemFontOfSize(18)
             cell!.detailTextLabel?.text = "Hella single-origin coffee intelligentsia, plaid trust fund keffiyeh 8-bit."
-            cell!.detailTextLabel?.font = UIFont.systemFontOfSize(12)
+            cell.detailTextLabel?.font = UIFont.systemFontOfSize(12)
             return cell!
     }
     
-    
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            performSegueWithIdentifier(questionSeque, sender: self)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            let rowValue = subjects[indexPath.row]
-            let message = "You selected \(rowValue)"
-            
-            let controller = UIAlertController(title: "Hooray",
-                message: message, preferredStyle: .Alert)
-            let action = UIAlertAction(title: "Yes I Did",
-                style: .Default, handler: nil)
-            controller.addAction(action)
-            
-            presentViewController(controller, animated: true, completion: nil)
     }
     
-    func tableView(tableView: UITableView,
-        heightForRowAtIndexPath indexPath: NSIndexPath)
-        -> CGFloat {
-            return indexPath.row == 0 ? 120 : 70
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == questionSeque {
+            // Setup new view controller
+        }
     }
-
-
-
 }
 
