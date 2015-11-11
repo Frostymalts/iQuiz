@@ -11,8 +11,25 @@ import UIKit
 class ViewController: UIViewController {
     private let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
     private let questionSeque = "questionSegue"
-    private let questionList = ["Mathematics": "2 + 2",
-        "Marvel Super Heroes": "Superman's real name?", "Science": "What is the powerhouse of the cell?"]
+    private let questionList = [
+        "Mathematics":
+            ["2 + 2", "5-1", "6+0"],
+        "Marvel Super Heroes":
+            ["Superman's real name?", "Who is a Marvel Character?", "What is the name of another comic brand"],
+        "Science":
+            ["What is the powerhouse of the cell?", "What is the act of energy through light", "Are Whales mamals?"]
+    ]
+    private let answerList = [
+        "2 + 2": ["4", "2", "6"],
+        "5-1": ["4", "3", "-2"],
+        "6+0": ["6", "1", "3"],
+        "Superman's real name?":["Clark Kent", "Spider Man", "Frodo"],
+        "Who is a Marvel Character?": ["Superman", "Your mom", "Spongebob"],
+        "What is the name of another comic brand": ["Dark Horse", "Freebird", "Your mom"],
+        "What is the powerhouse of the cell?":["Mitochondria", "Your mom", "Conrad"],
+        "What is the act of energy through light": ["Photosynthesis", "YAH YAH YAH", "Lorde"],
+        "Are Whales mamals?": ["Yes", "No", "Don't tell me nothing"]
+    ]
     
     let simpleTableIdentifier = "SimpleTableIdentifier"
     
@@ -80,8 +97,8 @@ class ViewController: UIViewController {
             let problems = questionList[key!]
             let questionViewController = segue.destinationViewController as! QuestionViewController
             
-            questionViewController.questions = problems
-            questionViewController.answers = "Yoooo"
+            questionViewController.questions = problems!
+            questionViewController.answers = answerList
         }
     }
 }

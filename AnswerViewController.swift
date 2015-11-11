@@ -15,16 +15,16 @@ class AnswerViewController: UIViewController {
    
     
     var question:String!
-    var choosenAnswer:String?
+    var chosenAnswer:String?
     var correctAnswer:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         questionLabel.text = "The question: \(question)"
-        answerLabel.text = "Correct Answer: \(correctAnswer)"
+        answerLabel.text = "Correct Answer: \(correctAnswer!)"
         
-        if choosenAnswer == correctAnswer {
+        if chosenAnswer == correctAnswer {
             self.view.backgroundColor = UIColor.greenColor()
         } else {
             self.view.backgroundColor = UIColor.redColor()
