@@ -95,7 +95,7 @@
                                     <segue destination="8gR-Ip-xlb" kind="presentation" identifier="answerSegue" id="iSB-95-eWT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6l-F5-oe3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Question " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6l-F5-oe3">
                                 <rect key="frame" x="28" y="96" width="552" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -185,7 +185,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="nextButtonPressed:" destination="8gR-Ip-xlb" eventType="touchUpInside" id="jDe-wp-DWS"/>
+                                    <segue destination="FtK-bu-TCz" kind="show" identifier="answerToQuestionSegue" id="RQj-n4-SOa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7C-w6-utx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="1368"/>
+            <point key="canvasLocation" x="1719" y="1304"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E8S-0N-XGC">
@@ -235,4 +235,7 @@
             <point key="canvasLocation" x="367" y="363"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RQj-n4-SOa"/>
+    </inferredMetricsTieBreakers>
 </document>

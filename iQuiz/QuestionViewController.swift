@@ -26,7 +26,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
         questionLabel.text = questions[currentQuestionIndex].question
         answerPicker.dataSource = self
         answerPicker.delegate = self
-        chosenAnswer = questions[0].correctAnswer
+        chosenAnswer = questions[random() % questions.count].correctAnswer
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,14 +38,10 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == ANSWER_SEGUE {
             answerViewController = segue.destinationViewController as! AnswerViewController
-            answerViewController.question = questions[currentQuestionIndex].question
-            answerViewController.correctAnswer = questions[currentQuestionIndex].correctAnswer
-            answerViewController.chosenAnswer = chosenAnswer
+            answerViewController.questions = questions
+            answerViewController.chosenAnswer = chosenAnswer!
+            answerViewController.currentQuestionIndex = currentQuestionIndex
         }
-    }
-    
-    @IBAction func submitButtonPressed(sender: AnyObject) {
-        currentQuestionIndex++
     }
     
     // How many selectors we want
@@ -53,7 +49,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return 1
     }
     
-    // How many options we need
+    // How many options we needf
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return questions.count
     }
@@ -66,6 +62,6 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // What to set as our answer
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         chosenAnswer = questions[currentQuestionIndex].answers[row]
-        answerViewController.chosenAnswer = chosenAnswer
+        answerViewController.chosenAnswer = chosenAnswer!
     }
 }
