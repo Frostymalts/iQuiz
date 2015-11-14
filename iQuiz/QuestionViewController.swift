@@ -11,22 +11,26 @@ import UIKit
 class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     private let ANSWER_SEGUE = "answerSegue"
     private var answerViewController = AnswerViewController()
-    
+     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerPicker: UIPickerView!
     
     var currentQuestionIndex = 0
+    var numOfCorrectAnswers = 0
     var questions:[Question] = []
     var chosenAnswer: String? = ""
   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "back:")
+        self.navigationItem.leftBarButtonItem = newBackButton;
         
         questionLabel.text = questions[currentQuestionIndex].question
         answerPicker.dataSource = self
         answerPicker.delegate = self
-        chosenAnswer = questions[random() % questions.count].correctAnswer
+        chosenAnswer = questions[currentQuestionIndex].answers[0]
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +45,12 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
             answerViewController.questions = questions
             answerViewController.chosenAnswer = chosenAnswer!
             answerViewController.currentQuestionIndex = currentQuestionIndex
+            answerViewController.numOfCorrectAnswers = numOfCorrectAnswers
         }
+    }
+    
+    func back(sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     // How many selectors we want
@@ -49,7 +58,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return 1
     }
     
-    // How many options we needf
+    // How many options we need
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return questions.count
     }

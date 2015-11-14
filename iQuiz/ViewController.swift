@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
     private let questionSeque = "questionSegue"
     private let mathQuestions = [
         Question(question: "2 + 2", answers: ["4", "2", "6"], correctAnswer: "4"),
@@ -61,7 +60,7 @@ class ViewController: UIViewController {
     // Number of mandatory rows
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return subjects.count
+            return quizzes.count
     }
     
     // Make tablecells
@@ -78,10 +77,10 @@ class ViewController: UIViewController {
             let highlightedImage = UIImage(named: "star2")
             cell!.imageView?.highlightedImage = highlightedImage
             
-            cell!.textLabel?.text = subjects[indexPath.row]
+            cell!.textLabel?.text = Array(quizzes.keys)[indexPath.row]
             cell!.textLabel?.font = UIFont .boldSystemFontOfSize(18)
-            cell!.detailTextLabel?.text = "Hella single-origin coffee intelligentsia, plaid trust fund keffiyeh 8-bit."
-            cell.detailTextLabel?.font = UIFont.systemFontOfSize(12)
+            //cell!.detailTextLabel?.text = "Hella single-origin coffee intelligentsia, plaid trust fund keffiyeh 8-bit."
+            //cell.detailTextLabel?.font = UIFont.systemFontOfSize(12)
             return cell!
     }
     
