@@ -11,6 +11,7 @@ import UIKit
 class AnswerViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var chosenAnswerLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
    
     
@@ -22,7 +23,8 @@ class AnswerViewController: UIViewController {
         super.viewDidLoad()
         
         questionLabel.text = "The question: \(question)"
-        answerLabel.text = "Correct Answer: \(correctAnswer!)"
+        chosenAnswerLabel.text = "Your answer: \(chosenAnswer!)"
+        answerLabel.text = "Correct answer: \(correctAnswer!)"
         
         if chosenAnswer == correctAnswer {
             self.view.backgroundColor = UIColor.greenColor()
@@ -33,5 +35,9 @@ class AnswerViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+   
+    @IBAction func nextButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -11,30 +11,33 @@ import UIKit
 class ViewController: UIViewController {
     private let subjects = ["Mathematics", "Marvel Super Heroes", "Science"]
     private let questionSeque = "questionSegue"
-    private let questionList = [
-        "Mathematics":
-            ["2 + 2", "5-1", "6+0"],
-        "Marvel Super Heroes":
-            ["Superman's real name?", "Who is a Marvel Character?", "What is the name of another comic brand"],
-        "Science":
-            ["What is the powerhouse of the cell?", "What is the act of energy through light", "Are Whales mamals?"]
+    private let mathQuestions = [
+        Question(question: "2 + 2", answers: ["4", "2", "6"], correctAnswer: "4"),
+        Question(question: "5-1", answers: ["4", "3", "-2"], correctAnswer: "4"),
+        Question(question: "6+0", answers: ["6", "1", "3"], correctAnswer: "6")
     ]
-    private let answerList = [
-        "2 + 2": ["4", "2", "6"],
-        "5-1": ["4", "3", "-2"],
-        "6+0": ["6", "1", "3"],
-        "Superman's real name?":["Clark Kent", "Spider Man", "Frodo"],
-        "Who is a Marvel Character?": ["Superman", "Your mom", "Spongebob"],
-        "What is the name of another comic brand": ["Dark Horse", "Freebird", "Your mom"],
-        "What is the powerhouse of the cell?":["Mitochondria", "Your mom", "Conrad"],
-        "What is the act of energy through light": ["Photosynthesis", "YAH YAH YAH", "Lorde"],
-        "Are Whales mamals?": ["Yes", "No", "Don't tell me nothing"]
+    private let marvelQuestions = [
+        Question(question: "Superman's real name?", answers: ["Clark Kent", "Spider Man", "Frodo"], correctAnswer: "Clark Kent"),
+        Question(question: "Who is a Marvel Character?", answers: ["Superman", "Your mom", "Spongebob"], correctAnswer: "Superman"),
+        Question(question: "What is the name of another comic brand", answers: ["Dark Horse", "Freebird", "Your mom"], correctAnswer: "Dark Horse")
     ]
+    private let scienceQuestions = [
+        Question(question: "What is the powerhouse of the cell?", answers: ["Mitochondria", "Your Mom", "Conrad"], correctAnswer: "Mitochondria"),
+        Question(question: "What is the act of energy through light", answers: ["Photosynthesis", "YAH YAH YAH", "Lorde"], correctAnswer: "Photosynthesis"),
+        Question(question: "Are Whales mamal?", answers: ["Yes", "No", "Don't tell me nothing"], correctAnswer: "Yes")
+    ]
+    private var quizzes: [String: [Question]] = ["":[]]
     
     let simpleTableIdentifier = "SimpleTableIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        quizzes = [
+            "Mathematics": mathQuestions,
+            "Marvel": marvelQuestions,
+            "Science": scienceQuestions
+        ]
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,11 +97,10 @@ class ViewController: UIViewController {
         if segue.identifier == questionSeque {
             let cell = sender as! UITableViewCell
             let key = cell.textLabel?.text
-            let problems = questionList[key!]
+            let problems = quizzes[key!]
             let questionViewController = segue.destinationViewController as! QuestionViewController
             
             questionViewController.questions = problems!
-            questionViewController.answers = answerList
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03277A221BF693DC003854E2 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03277A211BF693DC003854E2 /* Quiz.swift */; };
 		037E375F1BF297D70008D7CF /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E375E1BF297D70008D7CF /* AnswerViewController.swift */; };
 		03CBE15E1BF1E24100E08346 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */; };
 		03E4574D1BE94D24006CB7ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4574C1BE94D24006CB7ED /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03277A211BF693DC003854E2 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		037E375E1BF297D70008D7CF /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = ../AnswerViewController.swift; sourceTree = "<group>"; };
 		03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		03E457491BE94D24006CB7ED /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				037E375E1BF297D70008D7CF /* AnswerViewController.swift */,
 				03E4574C1BE94D24006CB7ED /* AppDelegate.swift */,
 				03E4574E1BE94D24006CB7ED /* ViewController.swift */,
+				03277A211BF693DC003854E2 /* Quiz.swift */,
 				03E457501BE94D24006CB7ED /* Main.storyboard */,
 				03CBE15D1BF1E24100E08346 /* QuestionViewController.swift */,
 				03E457531BE94D24006CB7ED /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				037E375F1BF297D70008D7CF /* AnswerViewController.swift in Sources */,
+				03277A221BF693DC003854E2 /* Quiz.swift in Sources */,
 				03E4574F1BE94D24006CB7ED /* ViewController.swift in Sources */,
 				03E4574D1BE94D24006CB7ED /* AppDelegate.swift in Sources */,
 				03CBE15E1BF1E24100E08346 /* QuestionViewController.swift in Sources */,
