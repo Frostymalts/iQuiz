@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    private let settingsViewController = SettingsViewController()
     private let questionSeque = "questionSegue"
     private let mathQuestions = [
         Question(question: "2 + 2", answers: ["4", "2", "6"], correctAnswer: "4"),
@@ -42,19 +43,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // Event handler for pressing the settings button
-    // Currently displays a pop up dialog
-    @IBAction func settingsPressed(sender: UIBarButtonItem) {
-        let title = "Settings go here"
-        let controller = UIAlertController(title: title, message: nil,
-            preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK",
-            style: .Default, handler: nil)
-        controller.addAction(action)
-        
-        presentViewController(controller, animated: true, completion: nil)
     }
     
     // Number of mandatory rows

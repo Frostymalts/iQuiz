@@ -11,7 +11,7 @@ import UIKit
 class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     private let ANSWER_SEGUE = "answerSegue"
     private var answerViewController = AnswerViewController()
-     
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerPicker: UIPickerView!
     
@@ -22,7 +22,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Style the view
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "back:")
         self.navigationItem.leftBarButtonItem = newBackButton;
