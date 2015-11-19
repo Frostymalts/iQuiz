@@ -9,10 +9,14 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    override func viewDidLoad() {
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var connectionStatusLabel: UILabel!
+    
+       override func viewDidLoad() {
         super.viewDidLoad()
         
-        modalPresentationStyle = .Popover
+        activityView.hidden = true
+        connectionStatusLabel.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,4 +24,20 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func checkURL(sender: UIButton) {
+        activityView.hidden = false
+        activityView.startAnimating()
+        WebService.fetchAndParseJSONFromURL("http://tednewardsandbox.site44.com/questions.json") { quizData in
+            if quizData.count == 0 {
+                self.connectionStatusLabel.text = "No Connection"
+            } else {
+                self.connectionStatusLabel.text = "Successful Connection"
+            }
+            
+            self.activityView.stopAnimating()
+            self.activityView.hidden = true
+            self.connectionStatusLabel.hidden = false
+            print("Hello")
+        }
+    }
 }

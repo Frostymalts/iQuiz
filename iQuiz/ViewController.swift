@@ -33,6 +33,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //var quizData = WebService.fetchAndParseJSONFromURL("http://tednewardsandbox.site44.com/questions.json")
+      //  print("\(quizData[0])")
+        
         quizzes = [
             "Mathematics": mathQuestions,
             "Marvel": marvelQuestions,

@@ -19,6 +19,7 @@
 		03E457571BE94D24006CB7ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E457551BE94D24006CB7ED /* LaunchScreen.storyboard */; };
 		03E457621BE94D24006CB7ED /* iQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E457611BE94D24006CB7ED /* iQuizTests.swift */; };
 		03E4576D1BE94D24006CB7ED /* iQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4576C1BE94D24006CB7ED /* iQuizUITests.swift */; };
+		9D6FAE371BFD88D500200685 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FAE361BFD88D500200685 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		03E457681BE94D24006CB7ED /* iQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E4576C1BE94D24006CB7ED /* iQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizUITests.swift; sourceTree = "<group>"; };
 		03E4576E1BE94D24006CB7ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D6FAE361BFD88D500200685 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		03E4574B1BE94D24006CB7ED /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				9D6FAE351BFD88BD00200685 /* Services */,
 				037E375E1BF297D70008D7CF /* AnswerViewController.swift */,
 				03E4574C1BE94D24006CB7ED /* AppDelegate.swift */,
 				03E4574E1BE94D24006CB7ED /* ViewController.swift */,
@@ -138,6 +141,14 @@
 				03E4576E1BE94D24006CB7ED /* Info.plist */,
 			);
 			path = iQuizUITests;
+			sourceTree = "<group>";
+		};
+		9D6FAE351BFD88BD00200685 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D6FAE361BFD88D500200685 /* WebService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 			files = (
 				0368629C1BF712FC00469AD5 /* FinishedViewController.swift in Sources */,
 				037E375F1BF297D70008D7CF /* AnswerViewController.swift in Sources */,
+				9D6FAE371BFD88D500200685 /* WebService.swift in Sources */,
 				03277A221BF693DC003854E2 /* Quiz.swift in Sources */,
 				03E4574F1BE94D24006CB7ED /* ViewController.swift in Sources */,
 				03E4574D1BE94D24006CB7ED /* AppDelegate.swift in Sources */,
