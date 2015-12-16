@@ -18,7 +18,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var currentQuestionIndex = 0
     var numOfCorrectAnswers = 0
     var questions:[Question] = []
-    var chosenAnswer: String? = ""
+    var chosenAnswer = 0
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,6 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
         questionLabel.text = questions[currentQuestionIndex].question
         answerPicker.dataSource = self
         answerPicker.delegate = self
-        chosenAnswer = questions[currentQuestionIndex].answers[0]
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,7 +42,7 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
         if segue.identifier == ANSWER_SEGUE {
             answerViewController = segue.destinationViewController as! AnswerViewController
             answerViewController.questions = questions
-            answerViewController.chosenAnswer = chosenAnswer!
+            answerViewController.chosenAnswer = chosenAnswer
             answerViewController.currentQuestionIndex = currentQuestionIndex
             answerViewController.numOfCorrectAnswers = numOfCorrectAnswers
         }
@@ -70,7 +69,6 @@ class QuestionViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // What to set as our answer
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        chosenAnswer = questions[currentQuestionIndex].answers[row]
-        answerViewController.chosenAnswer = chosenAnswer!
+        chosenAnswer = row
     }
 }

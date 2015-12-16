@@ -18,7 +18,7 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     
     var questions:[Question] = []
-    var chosenAnswer:String = ""
+    var chosenAnswer = 0
     var currentQuestionIndex = 0
     var numOfCorrectAnswers = 0
     
@@ -26,8 +26,8 @@ class AnswerViewController: UIViewController {
         super.viewDidLoad()
         
         let question = questions[currentQuestionIndex].question
-        let correctAnswer = questions[currentQuestionIndex].correctAnswer
-        
+        let correctAnswer = currentQuestionIndex
+
         self.navigationController?.navigationBarHidden = true
         
         questionLabel.text = "The question: \(question)"

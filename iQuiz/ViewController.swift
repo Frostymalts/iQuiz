@@ -11,36 +11,16 @@ import UIKit
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     private let settingsViewController = SettingsViewController()
     private let questionSeque = "questionSegue"
-    private let mathQuestions = [
-        Question(question: "2 + 2", answers: ["4", "2", "6"], correctAnswer: "4"),
-        Question(question: "5-1", answers: ["4", "3", "-2"], correctAnswer: "4"),
-        Question(question: "6+0", answers: ["6", "1", "3"], correctAnswer: "6")
-    ]
-    private let marvelQuestions = [
-        Question(question: "Superman's real name?", answers: ["Clark Kent", "Spider Man", "Frodo"], correctAnswer: "Clark Kent"),
-        Question(question: "Who is a Marvel Character?", answers: ["Superman", "Your mom", "Spongebob"], correctAnswer: "Superman"),
-        Question(question: "What is the name of another comic brand", answers: ["Dark Horse", "Freebird", "Your mom"], correctAnswer: "Dark Horse")
-    ]
-    private let scienceQuestions = [
-        Question(question: "What is the powerhouse of the cell?", answers: ["Mitochondria", "Your Mom", "Conrad"], correctAnswer: "Mitochondria"),
-        Question(question: "What is the act of energy through light", answers: ["Photosynthesis", "YAH YAH YAH", "Lorde"], correctAnswer: "Photosynthesis"),
-        Question(question: "Are Whales mamal?", answers: ["Yes", "No", "Don't tell me nothing"], correctAnswer: "Yes")
-    ]
+    private var keys: [String] = [String]()
     private var quizzes: [String: [Question]] = ["":[]]
+    @IBOutlet weak var tableView: UITableView!
     
     let simpleTableIdentifier = "SimpleTableIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //var quizData = WebService.fetchAndParseJSONFromURL("http://tednewardsandbox.site44.com/questions.json")
-      //  print("\(quizData[0])")
-        
-        quizzes = [
-            "Mathematics": mathQuestions,
-            "Marvel": marvelQuestions,
-            "Science": scienceQuestions
-        ]
+        loadJSON()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +31,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     // Number of mandatory rows
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return quizzes.count
+            return keys.count
     }
     
     // Make tablecells
@@ -68,7 +48,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             let highlightedImage = UIImage(named: "star2")
             cell!.imageView?.highlightedImage = highlightedImage
             
-            cell!.textLabel?.text = Array(quizzes.keys)[indexPath.row]
+            cell!.textLabel?.text = keys[indexPath.row]
             cell!.textLabel?.font = UIFont .boldSystemFontOfSize(18)
             //cell!.detailTextLabel?.text = "Hella single-origin coffee intelligentsia, plaid trust fund keffiyeh 8-bit."
             //cell.detailTextLabel?.font = UIFont.systemFontOfSize(12)
@@ -92,6 +72,46 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             
             questionViewController.questions = problems!
         }
+    }
+    
+    // Load json file from web
+    private func loadJSON() {
+        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        let URL = NSURL(string: "http://tednewardsandbox.site44.com/questions.json")
+        
+        let request = NSMutableURLRequest(URL: URL!)
+        request.HTTPMethod = "GET"
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [AnyObject]
+                for quiz in json {
+                    let title = quiz["title"] as! String
+                    print("\(title)")
+                    if title != "" {
+                        let desc = quiz["desc"]
+                        let questionsFromData:[NSDictionary] = quiz["questions"] as! [NSDictionary]
+                        var questions = [Question]()
+                        for question in questionsFromData {
+                            let answer = question["answer"] as! String
+                            let answers = question["answers"] as! [String]
+                            let questionText = question["text"] as! String
+                            let currentQuestion = Question(question: questionText, answers: answers, correctAnswer: answer)
+                            questions.append(currentQuestion)
+                        }
+                        self.keys.append(title)
+                        self.quizzes[title] = questions
+                    }
+                }
+                self.tableView.reloadData()
+            } catch {
+                print("You errored out tough bruh")
+            }
+        }
+        
+        task.resume()
     }
 }
 
